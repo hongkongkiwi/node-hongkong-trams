@@ -27,8 +27,11 @@ trams.getNextTramETA("92W").then(function(eta){
 });
 ```
 
-By default a new random useragent string.
+By default a new random useragent string is generated when the object is created. If you want to override this, please pass your useragent string into the options, for example:
 
+```javascript
+var trams = HongKongTrams({userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'});
+```
 
 ## Supported Methods
 
