@@ -32,7 +32,7 @@ hkPollution.getNextTramETA("92W").then(function(eta){
 
 * [`getTramStops()`](examples/getTramStops.js)
 * [`getNextTramETA(stopCode)`](examples/getNextTramETA.js)
-* [`getEmergencyTramMessage(stopCode)`](examples/getEmergencyTramMessage.js)
+* [`getEmergencyMessageForTramStop(stopCode)`](examples/getEmergencyMessageForTramStop.js)
 * [`getServiceUpdates()`](examples/getServiceUpdates.js)
 * [`getFares()`](examples/getFares.js)
 * [`getSchedules()`](examples/getSchedules.js)
