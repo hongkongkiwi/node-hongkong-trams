@@ -244,9 +244,9 @@ var tram = new Tram();
 // });
 
 /** Get ETA for specific tram stop **/
-// tram.getNextTramETA('92W').then(function(data) {
-//   console.log(data);
-// });
+tram.getNextTramETA('92W').then(function(data) {
+  console.log(data);
+});
 
 /** Get Special Messages for specific tram stop **/
 // tram.getEmergencyTramMessage('WST').then(function(data) {
@@ -287,6 +287,6 @@ var tram = new Tram();
 // });
 
 /** Get Schedule Info **/
-tram.getSchedules().then(function(schedules) {
-  console.log(schedules);
-});
+// tram.getSchedules().then(function(schedules) {
+//   console.log(schedules);
+// });

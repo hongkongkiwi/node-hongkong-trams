@@ -22,7 +22,7 @@ var HongKongTrams = require('hongkong-trams');
 
 var trams = HongKongTrams({lang: 'en'});
 
-hkPollution.getNextTramETA().then(function(eta){
+hkPollution.getNextTramETA("92W").then(function(eta){
     console.log(eta);
 });
 ```
@@ -30,13 +30,53 @@ hkPollution.getNextTramETA().then(function(eta){
 
 ## Supported Methods
 
-* [`getForecast()`](https://github.com/hongkongkiwi/node-hongkong-pollution/blob/master/examples/getForecast.js)
+* [`getTramStops()`](examples/getTramStops.js)
+* [`getNextTramETA(stopCode)`](examples/getNextTramETA.js)
+* [`getEmergencyTramMessage(stopCode)`](examples/getEmergencyTramMessage.js)
+* [`getServiceUpdates()`](examples/getServiceUpdates.js)
+* [`getFares()`](examples/getFares.js)
+* [`getSchedules()`](examples/getSchedules.js)
+
 
 ## Example data
 
-All methods return JSON, please see the examples linked above for more info on how to call each method.
+All methods return JSON, please see the examples linked above for more info on how to call each method. Here is an example of what get
 
-
+```json
+[ { arrive_in_minute: '9',
+    arrive_in_second: '509',
+    is_arrived: false,
+    stop_code: '92W',
+    seq: '1',
+    tram_id: '60',
+    dest_stop_code: 'KTT',
+    tram_dest_tc: '堅尼地城總站',
+    tram_dest_en: 'Kennedy Town Terminus',
+    is_last_tram: false,
+    eta: 'Jun 23 2016 10:21AM' },
+  { arrive_in_minute: '13',
+    arrive_in_second: '758',
+    is_arrived: false,
+    stop_code: '92W',
+    seq: '2',
+    tram_id: '168',
+    dest_stop_code: 'KTT',
+    tram_dest_tc: '堅尼地城總站',
+    tram_dest_en: 'Kennedy Town Terminus',
+    is_last_tram: false,
+    eta: 'Jun 23 2016 10:25AM' },
+  { arrive_in_minute: '16',
+    arrive_in_second: '907',
+    is_arrived: false,
+    stop_code: '92W',
+    seq: '3',
+    tram_id: '92',
+    dest_stop_code: 'KTT',
+    tram_dest_tc: '堅尼地城總站',
+    tram_dest_en: 'Kennedy Town Terminus',
+    is_last_tram: false,
+    eta: 'Jun 23 2016 10:28AM' } ]
+```
 
 ## Other Handy Modules
 
