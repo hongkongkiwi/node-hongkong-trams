@@ -1,17 +1,17 @@
 var Promise = require('bluebird');
 var rp = require('request-promise');
 var _ = require('underscore');
-var Loki = require('lokijs');
-var moment = require('moment');
 var parseString = Promise.promisify(require('xml2js').parseString);
 var cheerio = require('cheerio');
+var random_useragent = require('random-useragent');
 
 var Tram = function(options) {
   this.options = _.extendOwn({
-    lang: 'en'
+    userAgent: random_useragent.getRandom()
   }, options);
 
-  this.cache = new Loki('cache.json');
+  // For now this is not handled
+  this.options.lang = 'en';
 };
 
 Tram.WEST_DIRECTION = 'west';
@@ -31,7 +31,10 @@ Tram.prototype.getTramStops = function() {
     options = {
       method: 'GET',
       baseUrl: 'http://hktramways.com/js',
-      uri: '/googleMap.js'
+      uri: '/googleMap.js',
+      headers: {
+        'User-Agent': this.options.userAgent
+      },
     };
 
     return rp(options)
@@ -117,7 +120,10 @@ Tram.prototype.getNextTramETA = function(stopCode) {
   var options = {
     method: 'GET',
     baseUrl: 'http://hktramways.com',
-    uri: '/nextTram/geteat.php?stop_code=' + stopCode
+    uri: '/nextTram/geteat.php?stop_code=' + stopCode,
+    headers: {
+      'User-Agent': this.options.userAgent
+    },
   };
 
   return rp(options)
@@ -139,7 +145,10 @@ Tram.prototype.getEmergencyMessageForTramStop = function(stopCode) {
   var options = {
     method: 'GET',
     baseUrl: 'http://hktramways.com',
-    uri: '/nextTram/getmessage.php?stop_code=' + stopCode
+    uri: '/nextTram/getmessage.php?stop_code=' + stopCode,
+    headers: {
+      'User-Agent': this.options.userAgent
+    },
   };
 
   return rp(options)
@@ -174,7 +183,10 @@ Tram.prototype.getServiceUpdates = function() {
   var options = {
     method: 'GET',
     baseUrl: 'http://hktramways.com',
-    uri: '/en/service-updates/'
+    uri: '/' + this.options.lang + '/service-updates/',
+    headers: {
+      'User-Agent': this.options.userAgent
+    },
   };
 
   return rp(options)
@@ -204,7 +216,7 @@ Tram.prototype.getServiceUpdates = function() {
         var options = {
           method: 'GET',
           baseUrl: 'http://hktramways.com',
-          uri: '/en/service-updates-detail/' + item.id + '/1'
+          uri: '/' + this.options.lang + '/service-updates-detail/' + item.id + '/1'
         };
 
         return rp(options)
@@ -226,7 +238,10 @@ Tram.prototype.getFares = function() {
   var options = {
     method: 'GET',
     baseUrl: 'http://hktramways.com',
-    uri: '/en/schedules-fares/'
+    uri: '/' + this.options.lang + '/schedules-fares/',
+    headers: {
+      'User-Agent': this.options.userAgent
+    },
   };
 
   return rp(options)
@@ -261,7 +276,10 @@ Tram.prototype.getSchedules = function() {
   var options = {
     method: 'GET',
     baseUrl: 'http://hktramways.com',
-    uri: '/en/schedules-fares/'
+    uri: '/' + this.options.lang + '/schedules-fares/',
+    headers: {
+      'User-Agent': this.options.userAgent
+    },
   };
 
   return rp(options)

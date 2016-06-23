@@ -1,6 +1,6 @@
 {
   "name": "hongkong-trams",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node module to get info for Hong Kong Tramways, including fares, schedules and realtime next tram info.",
   "main": "index.js",
   "scripts": {
@@ -26,10 +26,11 @@
   "author": "Andy Savage <andy@savage.hk>",
   "license": "MIT",
   "dependencies": {
-    "async": "^2.0.0-rc.5",
     "bluebird": "^3.4.0",
     "cheerio": "^0.20.0",
+    "random-useragent": "^0.3.0",
     "request-promise": "^3.0.0",
+    "underscore": "^1.8.3",
     "xml2js": "^0.4.16"
   },
   "devDependencies": {

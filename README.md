@@ -20,12 +20,14 @@ When creating the instance, you can pass some options, for now, only the languag
 ```javascript
 var HongKongTrams = require("hongkong-trams");
 
-var trams = HongKongTrams({lang: "en"});
+var trams = HongKongTrams();
 
-hkPollution.getNextTramETA("92W").then(function(eta){
+trams.getNextTramETA("92W").then(function(eta){
     console.log(eta);
 });
 ```
+
+By default a new random useragent string.
 
 
 ## Supported Methods
